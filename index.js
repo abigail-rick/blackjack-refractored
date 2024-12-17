@@ -33,20 +33,17 @@ start.addEventListener("click", startGame);
         .then(data => {
             const deckId = data.deck_id;
             console.log(data)
-        
         fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=4`)
             .then(res => res.json())
             .then(data => {
-
                 houseCards.innerHTML = `
                 <img src="${data.cards[0].image}"/>
                 <img src="${data.cards[1].image}"/>`
-
+                
                 playerCards.innerHTML =  `
                 <img src="${data.cards[2].image}"/>
                 <img src="${data.cards[3].image}"/>`
-                console.log(data)
-                
+                console.log(data) 
         })
     })
 }
