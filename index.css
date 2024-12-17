@@ -1,26 +1,15 @@
-* General Styles */
-body {
-    background-image:url('/images/blackjackBack.png.webp');
-    background-repeat: no-repeat; 
-    background-position: right bottom; 
-    background-repeat: no-repeat; 
-    background-size: auto; 
-    color: #1c1d1d;
-    font-family: Arial, sans-serif;
-    text-align: center;
+body{
     margin: 0;
     padding: 0;
+    background-image: url('blackjackgreenplain.jpg');
+    
+    background-size: cover;
 }
-
 
 h1 {
     font-size: 50px;
     margin-top: 50px;
     color: #f39c12;
-}
-
-#card-el, #sum-el, #house-el{
-    font-size: 25px;
 }
 
 /* Button Styles */
@@ -51,4 +40,19 @@ p {
     font-weight: bold;
 }
 
+.cardsContainer {
+    display: flex;
+    flex-direction: column;
+    border: 1px, solid, red;
+}
+
+.houseCardsContainer {
+   
+    width: 50%
+}
+
+.playerCardsContainer {
+    width: 50%;
+    
+}
 

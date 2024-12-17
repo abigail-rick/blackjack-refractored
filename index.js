@@ -12,32 +12,34 @@
 // const gameDataInDB = ref(database, "GameData");
 
 
-let playerCards = [];
+
 let sum = 0;
 let houseSum = 0;
 
-const sumEl = document.getElementById('sum-el');
-const messageEl = document.getElementById('message-el');
-const cardEl = document.getElementById('card-el');
-const startBtn = document.getElementById('start');
-const stay = document.getElementById('stay');
-let playerEl = document.getElementById("player");
-let houseEl = document.getElementById('house-el');
+const sumEl = document.querySelector('.sum-el');
+const messageEl = document.querySelector('.message-el');
+const cardEl = document.querySelector('.card-el');
+const start = document.querySelector('.start');
+const stay = document.querySelector('.stay');
 
-function getRandomCard(){
-    let randomCard = Math.floor(Math.random() * 13) + 1;
-    if (randomCard === 1){
-        return 11;
-   } else if (randomCard > 10){
-    return 10;
-   } else {
-    return randomCard;
-   }
-}
+let playerCards = document.querySelector(".playerCards");
+let houseCards = document.querySelector('.houseCards');
+
+// function getRandomCard(){
+//     let randomCard = Math.floor(Math.random() * 13) + 1;
+//     if (randomCard === 1){
+//         return 11;
+//    } else if (randomCard > 10){
+//     return 10;
+//    } else {
+//     return randomCard;
+//    }
+// }
  
-startBtn.addEventListener("click", function(){
+start.addEventListener("click", startGame);
 
-        fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6")
+    function startGame(){
+    fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6")
         .then(res => res.json())
         .then(data => {
             const deckId = data.deck_id;
@@ -46,11 +48,19 @@ startBtn.addEventListener("click", function(){
         fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=4`)
             .then(res => res.json())
             .then(data => {
-                data.cards;
+
+                houseCards.innerHTML = `
+                <img src="${data.cards[0].image}"/>
+                <img src="${data.cards[1].image}"/>`
+
+                playerCards.innerHTML =  `
+                <img src="${data.cards[2].image}"/>
+                <img src="${data.cards[3].image}"/>`
                 console.log(data)
+                
         })
     })
-    })
+}
 
     // resetBtn.innerHTML = "RESET";
     // let playerFirstCard = getRandomCard();
