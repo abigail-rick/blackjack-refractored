@@ -5,13 +5,18 @@
     </head>
     <body>
         <h1>Blackjack</h1>
-        <p id="message-el">Click START GAME to play</p>
-        <p id="card-el">My Cards:</p>
-        <p id="sum-el">Sum:</p>
-        <div id="house-el">The House:</div>
-        <button id="reset" onclick="startGame()">START GAME</button>
+        <p class="message-el">Click START GAME to play</p>
+    
+       <div class="houseCardsContainer">
+           <div class="houseCards">House cards:</div>
+       </div>
+       <div class="playerCardsContainer">
+            <div class="playerCards">My Cards:</div>
+        </div>
+        
+        <button class="start">START GAME</button>
         <button onclick="newCard()">HIT</button>
-        <button id="stay">STAY</button>
+        <button class="stay">STAY</button>
         <script src="index.js" type="module" ></script>
         
     </body>
