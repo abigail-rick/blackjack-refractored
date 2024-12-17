@@ -24,17 +24,6 @@ const stay = document.querySelector('.stay');
 
 let playerCards = document.querySelector(".playerCards");
 let houseCards = document.querySelector('.houseCards');
-
-// function getRandomCard(){
-//     let randomCard = Math.floor(Math.random() * 13) + 1;
-//     if (randomCard === 1){
-//         return 11;
-//    } else if (randomCard > 10){
-//     return 10;
-//    } else {
-//     return randomCard;
-//    }
-// }
  
 start.addEventListener("click", startGame);
 
@@ -63,12 +52,10 @@ start.addEventListener("click", startGame);
 }
 
     // resetBtn.innerHTML = "RESET";
-    // let playerFirstCard = getRandomCard();
-    // let playerSecondCard = getRandomCard();    
+    
     // playerCards.push(playerFirstCard);
     // playerCards.push(playerSecondCard);
-    // houseFirstCard = getRandomCard();
-    // houseSecondCard = getRandomCard();
+  
     // houseSum = houseFirstCard + houseSecondCard;
     // sum = playerFirstCard + playerSecondCard;
     // houseEl.textContent = "The House's cards: ?, " + houseSecondCard;
