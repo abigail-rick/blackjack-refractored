@@ -1,0 +1,54 @@
+* General Styles */
+body {
+    background-image:url('/images/blackjackBack.png.webp');
+    background-repeat: no-repeat; 
+    background-position: right bottom; 
+    background-repeat: no-repeat; 
+    background-size: auto; 
+    color: #1c1d1d;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+h1 {
+    font-size: 50px;
+    margin-top: 50px;
+    color: #f39c12;
+}
+
+#card-el, #sum-el, #house-el{
+    font-size: 25px;
+}
+
+/* Button Styles */
+button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #c0392b;
+}
+
+/* Text Styles */
+p {
+    font-size: 1.5rem;
+    margin: 15px;
+}
+
+#message-el {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+
