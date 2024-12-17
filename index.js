@@ -1,15 +1,17 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"; 
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"; 
 
-import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+// import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
-const appSettings = {
-    databaseURL: "https://blackjack-game-abr-default-rtdb.firebaseio.com/"
-}
-console.log(appSettings);
+// const appSettings = {
+//     databaseURL: "https://blackjack-game-abr-default-rtdb.firebaseio.com/"
+// }
+// console.log(appSettings);
 
-const app = initializeApp(appSettings);
-const database = getDatabase(app);
-const gameDataInDB = ref(database, "GameData");
+// const app = initializeApp(appSettings);
+// const database = getDatabase(app);
+// const gameDataInDB = ref(database, "GameData");
+
+
 
 
 let houseFirstCard;
@@ -17,6 +19,7 @@ let houseSecondCard;
 let playerCards = [];
 let sum = 0;
 let houseSum = 0;
+
 const sumEl = document.getElementById('sum-el');
 const messageEl = document.getElementById('message-el');
 const cardEl = document.getElementById('card-el');
