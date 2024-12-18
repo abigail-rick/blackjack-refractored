@@ -7,7 +7,7 @@ body{
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 3.5rem;
     margin-top: 50px;
     color: #f39c12;
     text-align: center;
@@ -40,15 +40,11 @@ button:hover {
 }
 
 /* Text Styles */
-p {
-    font-size: 1.5rem;
-    margin: 15px;
-}
 
 .message-el {
     color: white;
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2.5rem;
 }
 
 .cardsContainer {
