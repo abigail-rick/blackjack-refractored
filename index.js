@@ -16,11 +16,11 @@
 let sum = 0;
 let houseSum = 0;
 
+let deckId;
+let count;
 const start = document.querySelector('.start');
-
-const sumEl = document.querySelector('.sum-el');
+const hit = document.querySelector('.hit');
 const messageEl = document.querySelector('.message-el');
-const cardEl = document.querySelector('.card-el');
 
 const stay = document.querySelector('.stay');
 
@@ -51,7 +51,7 @@ start.addEventListener("click", startGame);
     fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6")
         .then(res => res.json())
         .then(data => {
-            const deckId = data.deck_id;
+            deckId = data.deck_id;
             console.log(data)
         fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=4`)
             .then(res => res.json())
@@ -73,8 +73,6 @@ start.addEventListener("click", startGame);
                 if(playerScore === 21 || houseScore === 21){
                     messageEl.textContent = "BLACKJACK!";
                     gameOver = true;
-                } else {
-                    playGame();
                 }
                 console.log(houseScore);
                 console.log(playerScore);
@@ -83,11 +81,20 @@ start.addEventListener("click", startGame);
     })
 }
 
-    function playGame(){
-        if (playerScore < 21){
-            
-        }
-    }
+    function drawCards(count){
+        fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${count}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                data.cards.forEach(card => {
+                    playerCards.innerHTML += `
+                    <img src="${card.image}"/>`
+
+                })
+    })
+}
+
+    hit.addEventListener("click", ()=> drawCards(1));
 
 
 
@@ -150,13 +157,6 @@ start.addEventListener("click", startGame);
 //     push(gameDataInDB, playerCards);
 // }
 
-// function newCard(){
-//     let thirdCard = getRandomCard();
-//     playerCards.push(thirdCard);
-//     sum += thirdCard;
-//     cardEl.textContent = "Cards: " + playerCards.join(", ");
-//     renderGame();
-// }
 
 // resetBtn.addEventListener("click", function restart() {
 //     playerCards = [];
