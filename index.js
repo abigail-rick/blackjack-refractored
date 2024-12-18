@@ -13,11 +13,8 @@
 
 
 
-let sum = 0;
-let houseSum = 0;
 
 let deckId;
-let count;
 const start = document.querySelector('.start');
 const hit = document.querySelector('.hit');
 const messageEl = document.querySelector('.message-el');
