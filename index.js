@@ -130,11 +130,7 @@ startBtn.addEventListener("click", startGame);
                 messageEl.innerHTML = "House wins!"
                 gameOver = true;
             }
-
         }
-
-
-       
 
         function stay(){
              houseCards.innerHTML = `
@@ -146,8 +142,7 @@ startBtn.addEventListener("click", startGame);
                 } else if (houseScore > playerScore){
                     messageEl.textContent = "House wins!"
                     gameOver = true;
-                }
-                
+                } 
         }
 
     hitBtn.addEventListener("click", ()=> drawCardsPlayer(1));
