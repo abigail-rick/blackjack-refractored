@@ -79,7 +79,7 @@ startBtn.addEventListener("click", startGame);
     })
 }
 
-    function drawCards(count){
+    function drawCardsPlayer(count){
         fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${count}`)
             .then(res => res.json())
             .then(data => {
@@ -90,6 +90,22 @@ startBtn.addEventListener("click", startGame);
                     playerScore += cardValues[card.value];
                     console.log(playerScore);
                     playGamePlayer();
+                })
+    })
+}
+
+    function drawCardsHouse(count){
+        fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${count}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                data.cards.forEach(card => {
+                    houseCards.innerHTML += `
+                    <img src="${card.image}"/>`
+                    houseScore += cardValues[card.value];
+                    console.log(playerScore);
+                    playGamePlayer();
+                    playGameHouse();
                 })
     })
 }
@@ -112,6 +128,7 @@ startBtn.addEventListener("click", startGame);
                 gameOver= true;
             } else if (houseScore < 17 && houseScore < playerScore){
                 messageEl.textContent = "House can draw another card";
+                drawCardsHouse(1);
             }
         }
 
@@ -122,34 +139,9 @@ startBtn.addEventListener("click", startGame);
                 playGameHouse();
         }
 
-    hitBtn.addEventListener("click", ()=> drawCards(1));
+    hitBtn.addEventListener("click", ()=> drawCardsPlayer(1));
     stayBtn.addEventListener("click", stay)
-
-
-    // resetBtn.innerHTML = "RESET";
-    
-    // playerCards.push(playerFirstCard);
-    // playerCards.push(playerSecondCard);
-  
-    // houseSum = houseFirstCard + houseSecondCard;
-    // sum = playerFirstCard + playerSecondCard;
-    // houseEl.textContent = "The House's cards: ?, " + houseSecondCard;
-    // renderGame();
-    // console.log(playerCards);
-    // console.log(houseFirstCard, houseSecondCard);
-    
-
-//     stay.addEventListener("click", function() {
-//        houseEl.textContent = "The House's cards: " + houseFirstCard + " , " + houseSecondCard;
-        
-//               if (houseSum <= 16 && sum > houseSum) {
-//                 messageEl.textContent = "The House draws a third card";
-//                 setTimeout(function() {
-//                 let houseThirdCard = getRandomCard();  // House draws a third card
-//                 houseSum += houseThirdCard;
-//                 houseEl.textContent = "The House's cards: " + houseFirstCard + " , " + houseSecondCard + " , " + houseThirdCard;    
-//                 renderGamePart2();
-                
+ 
             
 //         }, 3000);  
 //     } else {
