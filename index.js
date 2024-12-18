@@ -102,10 +102,20 @@ startBtn.addEventListener("click", startGame);
             }
         }
 
+        function playGameHouse(){
+            if(houseScore > 21) {
+                messageEl.innerHTML = "House Busts! You win!";
+                gameOver= true;
+            } else if (houseCards < 17){
+                messageEl.innerHTML = "House can draw another card";
+            }
+        }
+
     
 
         function stay(){
-
+            // reveal 2nd housecard
+            
         }
 
     hitBtn.addEventListener("click", ()=> drawCards(1));
