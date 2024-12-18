@@ -1,8 +1,8 @@
 body{
     margin: 0;
+    font-family: fantasy;
     padding: 0;
     background-image: url('blackjackgreenplain.jpg');
-    
     background-size: cover;
 }
 
@@ -10,6 +10,7 @@ h1 {
     font-size: 50px;
     margin-top: 50px;
     color: #f39c12;
+    text-align: center;
 }
 
 /* Button Styles */
@@ -35,9 +36,10 @@ p {
     margin: 15px;
 }
 
-#message-el {
+.message-el {
+    color: white;
+    text-align: center;
     font-size: 1.8rem;
-    font-weight: bold;
 }
 
 .cardsContainer {
