@@ -57,14 +57,14 @@ startBtn.addEventListener("click", startGame);
                 houseCard1 = data.cards[0].image;
                 houseCard2 = data.cards[1].image;
                 houseCards.innerHTML = `
-                <img src="${houseCard1}"/>
-                <img src="https://deckofcardsapi.com/static/img/back.png"/>`
+                <img src="${houseCard1}" style="width: 200px; height: auto;"/>
+                <img src="https://deckofcardsapi.com/static/img/back.png" style="width: 200px; height: auto;"/>`
                 console.log(data.cards)
                 houseCard2 = data.cards[1].image;
 
                 playerCards.innerHTML =  `
-                <img src="${data.cards[2].image}"/>
-                <img src="${data.cards[3].image}"/>`
+                <img src="${data.cards[2].image}" style="width: 200px; height: auto;"/>
+                <img src="${data.cards[3].image}" style="width: 200px; height: auto;"/>`
                         
                 houseScore = cardValues[data.cards[0].value] + cardValues[data.cards[1].value]
                 playerScore = cardValues[data.cards[2].value] + cardValues[data.cards[3].value]
@@ -84,7 +84,7 @@ startBtn.addEventListener("click", startGame);
                 console.log(data);
                 data.cards.forEach(card => {
                     playerCards.innerHTML += `
-                    <img src="${card.image}"/>`
+                    <img src="${card.image}" style="width: 200px; height: auto;"/>`
                     playerScore += cardValues[card.value];
                     console.log(playerScore);
                     playGamePlayer();
@@ -99,10 +99,8 @@ startBtn.addEventListener("click", startGame);
                 console.log(data);
                 data.cards.forEach(card => {
                     houseCards.innerHTML += `
-                    <img src="${card.image}"/>`
+                    <img src="${card.image}" style="width: 200px; height: auto;"/>`
                     houseScore += cardValues[card.value];
-                    
-        
                     playGameHouse();
                 })
     })
@@ -134,8 +132,8 @@ startBtn.addEventListener("click", startGame);
 
         function stay(){
              houseCards.innerHTML = `
-                <img src="${houseCard1}"/>
-                <img src="${houseCard2}"/>`;
+                <img src="${houseCard1}" style="width: 200px; height: auto;"/>
+                <img src="${houseCard2}" style="width: 200px; height: auto;"/>`;
                 if (houseScore < 17 && houseScore < playerScore){
                     messageEl.textContent = "House can draw another card";
                     drawCardsHouse(1);
