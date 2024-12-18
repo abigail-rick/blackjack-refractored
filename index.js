@@ -23,6 +23,8 @@ const stayBtn = document.querySelector('.stay');
 
 let playerCards = document.querySelector(".playerCards");
 let houseCards = document.querySelector('.houseCards');
+let houseCard1;
+let houseCard2;
 let playerScore = 0;
 let houseScore = 0;
 let gameOver = false;
@@ -54,11 +56,13 @@ startBtn.addEventListener("click", startGame);
         fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=4`)
             .then(res => res.json())
             .then(data => {
-             
+                houseCard1 = data.cards[0].image;
+                houseCard2 = data.cards[1].image;
                 houseCards.innerHTML = `
-                <img src="${data.cards[0].image}"/>
+                <img src="${houseCard1}"/>
                 <img src="https://deckofcardsapi.com/static/img/back.png"/>`
                 console.log(data.cards)
+                houseCard2 = data.cards[1].image;
 
                 playerCards.innerHTML =  `
                 <img src="${data.cards[2].image}"/>
@@ -114,8 +118,9 @@ startBtn.addEventListener("click", startGame);
     
 
         function stay(){
-            // reveal 2nd housecard
-            
+             houseCards.innerHTML = `
+                <img src="${houseCard1}"/>
+                <img src="${houseCard2}"/>`
         }
 
     hitBtn.addEventListener("click", ()=> drawCards(1));
