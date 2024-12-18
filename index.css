@@ -15,6 +15,7 @@ h1 {
 
 /* Button Styles */
 button {
+    font-family: fantasy;
     background-color: #e74c3c;
     display: inline-block;
     color: #000000;
