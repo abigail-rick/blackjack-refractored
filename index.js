@@ -63,15 +63,11 @@ startBtn.addEventListener("click", startGame);
                 playerCards.innerHTML =  `
                 <img src="${data.cards[2].image}"/>
                 <img src="${data.cards[3].image}"/>`
-                messageEl.textContent = "Would you like to hit or stay?"
-                
+                        
                 houseScore = cardValues[data.cards[0].value] + cardValues[data.cards[1].value]
                 playerScore = cardValues[data.cards[2].value] + cardValues[data.cards[3].value]
 
-                if(playerScore === 21 || houseScore === 21){
-                    messageEl.textContent = "BLACKJACK!";
-                    gameOver = true;
-                }
+        
                 console.log(houseScore);
                 console.log(playerScore);
         })
@@ -89,13 +85,24 @@ startBtn.addEventListener("click", startGame);
                     <img src="${card.image}"/>`
                     playerScore += cardValues[card.value];
                     console.log(playerScore);
-                    if(playerScore > 21){
-                        messageEl.innerHTML = "You Bust! Gameover";
-                        gameOver = true;
-                    }
+                    playGamePlayer();
                 })
     })
 }
+
+        function playGamePlayer(){
+            if(playerScore === 21 || houseScore === 21){
+                messageEl.textContent = "BLACKJACK!";
+                gameOver = true;
+            } else if (playerScore > 21){
+                messageEl.innerHTML = "You Bust! Gameover";
+                gameOver = true;
+            } else if (playerScore < 21) {
+                messageEl.textContent = "Would you like to hit or stay?"
+            }
+        }
+
+    
 
         function stay(){
 
