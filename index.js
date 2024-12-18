@@ -16,15 +16,33 @@
 let sum = 0;
 let houseSum = 0;
 
+const start = document.querySelector('.start');
+
 const sumEl = document.querySelector('.sum-el');
 const messageEl = document.querySelector('.message-el');
 const cardEl = document.querySelector('.card-el');
-const start = document.querySelector('.start');
+
 const stay = document.querySelector('.stay');
 
 let playerCards = document.querySelector(".playerCards");
 let houseCards = document.querySelector('.houseCards');
  
+let cardValues = {
+    "QUEEN": 10,
+    "KING": 10,
+    "JACK": 10,
+    "ACE": 11, // You can handle the special Ace logic later
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "10": 10
+};
+
 start.addEventListener("click", startGame);
 
     function startGame(){
@@ -36,17 +54,22 @@ start.addEventListener("click", startGame);
         fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=4`)
             .then(res => res.json())
             .then(data => {
+             
                 houseCards.innerHTML = `
                 <img src="${data.cards[0].image}"/>
                 <img src="${data.cards[1].image}"/>`
-                
+                console.log(data.cards)
+
                 playerCards.innerHTML =  `
                 <img src="${data.cards[2].image}"/>
                 <img src="${data.cards[3].image}"/>`
-                console.log(data) 
+                messageEl.textContent = "Would you like to hit or stay?"
         })
+
     })
 }
+
+
 
     // resetBtn.innerHTML = "RESET";
     
