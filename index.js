@@ -11,9 +11,6 @@
 // const database = getDatabase(app);
 // const gameDataInDB = ref(database, "GameData");
 
-
-
-
 let deckId;
 const startBtn = document.querySelector('.start');
 const hitBtn = document.querySelector('.hit');
@@ -56,6 +53,7 @@ startBtn.addEventListener("click", startGame);
         fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=4`)
             .then(res => res.json())
             .then(data => {
+                messageEl.textContent = "Cards have been dealt";
                 houseCard1 = data.cards[0].image;
                 houseCard2 = data.cards[1].image;
                 houseCards.innerHTML = `
@@ -103,8 +101,8 @@ startBtn.addEventListener("click", startGame);
                     houseCards.innerHTML += `
                     <img src="${card.image}"/>`
                     houseScore += cardValues[card.value];
-                    console.log(playerScore);
-                    playGamePlayer();
+                    
+        
                     playGameHouse();
                 })
     })
@@ -123,20 +121,33 @@ startBtn.addEventListener("click", startGame);
         }
 
         function playGameHouse(){
-            if(houseScore > 21) {
+            if (houseScore > 21) {
                 messageEl.innerHTML = "House Busts! You win!";
-                gameOver= true;
-            } else if (houseScore < 17 && houseScore < playerScore){
-                messageEl.textContent = "House can draw another card";
-                drawCardsHouse(1);
+            } else if (playerScore > houseScore) {
+                messageEl.innerHTML = "You win!"
+                gameOver = true;
+            } else {
+                messageEl.innerHTML = "House wins!"
+                gameOver = true;
             }
+
         }
+
+
+       
 
         function stay(){
              houseCards.innerHTML = `
                 <img src="${houseCard1}"/>
                 <img src="${houseCard2}"/>`;
-                playGameHouse();
+                if (houseScore < 17 && houseScore < playerScore){
+                    messageEl.textContent = "House can draw another card";
+                    drawCardsHouse(1);
+                } else if (houseScore > playerScore){
+                    messageEl.textContent = "House wins!"
+                    gameOver = true;
+                }
+                
         }
 
     hitBtn.addEventListener("click", ()=> drawCardsPlayer(1));
