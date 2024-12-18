@@ -110,17 +110,16 @@ startBtn.addEventListener("click", startGame);
             if(houseScore > 21) {
                 messageEl.innerHTML = "House Busts! You win!";
                 gameOver= true;
-            } else if (houseCards < 17){
-                messageEl.innerHTML = "House can draw another card";
+            } else if (houseScore < 17 && houseScore < playerScore){
+                messageEl.textContent = "House can draw another card";
             }
         }
-
-    
 
         function stay(){
              houseCards.innerHTML = `
                 <img src="${houseCard1}"/>
-                <img src="${houseCard2}"/>`
+                <img src="${houseCard2}"/>`;
+                playGameHouse();
         }
 
     hitBtn.addEventListener("click", ()=> drawCards(1));
