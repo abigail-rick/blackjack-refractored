@@ -57,7 +57,7 @@ start.addEventListener("click", startGame);
              
                 houseCards.innerHTML = `
                 <img src="${data.cards[0].image}"/>
-                <img src="${data.cards[1].image}"/>`
+                <img src="https://deckofcardsapi.com/static/img/back.png"/>`
                 console.log(data.cards)
 
                 playerCards.innerHTML =  `
