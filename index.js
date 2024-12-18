@@ -15,11 +15,11 @@
 
 
 let deckId;
-const start = document.querySelector('.start');
-const hit = document.querySelector('.hit');
+const startBtn = document.querySelector('.start');
+const hitBtn = document.querySelector('.hit');
 const messageEl = document.querySelector('.message-el');
 
-const stay = document.querySelector('.stay');
+const stayBtn = document.querySelector('.stay');
 
 let playerCards = document.querySelector(".playerCards");
 let houseCards = document.querySelector('.houseCards');
@@ -43,7 +43,7 @@ let cardValues = {
     "10": 10
 };
 
-start.addEventListener("click", startGame);
+startBtn.addEventListener("click", startGame);
 
     function startGame(){
     fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6")
@@ -89,12 +89,20 @@ start.addEventListener("click", startGame);
                     <img src="${card.image}"/>`
                     playerScore += cardValues[card.value];
                     console.log(playerScore);
+                    if(playerScore > 21){
+                        messageEl.innerHTML = "You Bust! Gameover";
+                        gameOver = true;
+                    }
                 })
     })
 }
 
-    hit.addEventListener("click", ()=> drawCards(1));
+        function stay(){
 
+        }
+
+    hitBtn.addEventListener("click", ()=> drawCards(1));
+    stayBtn.addEventListener("click", stay)
 
 
     // resetBtn.innerHTML = "RESET";
