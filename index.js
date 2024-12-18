@@ -23,7 +23,8 @@ const stay = document.querySelector('.stay');
 
 let playerCards = document.querySelector(".playerCards");
 let houseCards = document.querySelector('.houseCards');
-
+let playerScore = 0;
+let houseScore = 0;
 let gameOver = false;
 
 let cardValues = {
@@ -64,8 +65,8 @@ start.addEventListener("click", startGame);
                 <img src="${data.cards[3].image}"/>`
                 messageEl.textContent = "Would you like to hit or stay?"
                 
-                let houseScore = cardValues[data.cards[0].value] + cardValues[data.cards[1].value]
-                let playerScore = cardValues[data.cards[2].value] + cardValues[data.cards[3].value]
+                houseScore = cardValues[data.cards[0].value] + cardValues[data.cards[1].value]
+                playerScore = cardValues[data.cards[2].value] + cardValues[data.cards[3].value]
 
                 if(playerScore === 21 || houseScore === 21){
                     messageEl.textContent = "BLACKJACK!";
@@ -86,7 +87,8 @@ start.addEventListener("click", startGame);
                 data.cards.forEach(card => {
                     playerCards.innerHTML += `
                     <img src="${card.image}"/>`
-
+                    playerScore += cardValues[card.value];
+                    console.log(playerScore);
                 })
     })
 }
